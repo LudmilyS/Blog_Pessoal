@@ -10,13 +10,14 @@ export class PostagemService {
     @InjectRepository(Postagem)
     private postagemRepository: Repository<Postagem>, //chamamos de repository o que interage com o DB
     private temaService: TemaService,
-  ) { }
+  ) {}
 
   async findAll(): Promise<Postagem[]> {
     //'[]' significa lista
     return await this.postagemRepository.find({
       relations: {
         tema: true,
+        usuario: true,
       },
     });
   }
@@ -29,6 +30,7 @@ export class PostagemService {
       },
       relations: {
         tema: true,
+        usuario: true,
       },
     });
 
@@ -47,6 +49,7 @@ export class PostagemService {
       },
       relations: {
         tema: true,
+        usuario: true,
       },
     });
   }
